@@ -3,8 +3,9 @@ import sys
 import os
 sys.path.append(os.pardir)  # 親ディレクトリのファイルをインポートするための設定
 import numpy as np
-from dataset.mnist import load_mnist
+from dataset_d.mnist import load_mnist
 from PIL import Image
+import matplotlib.pyplot as plt
 
 
 def img_show(img):
