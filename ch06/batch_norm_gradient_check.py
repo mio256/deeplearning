@@ -1,8 +1,9 @@
 # coding: utf-8
-import sys, os
+import sys
+import os
 sys.path.append(os.pardir)  # 親ディレクトリのファイルをインポートするための設定
 import numpy as np
-from dataset.mnist import load_mnist
+from dataset_d.mnist import load_mnist
 from common.multi_layer_net_extend import MultiLayerNetExtend
 
 # データの読み込み
@@ -19,5 +20,5 @@ grad_numerical = network.numerical_gradient(x_batch, t_batch)
 
 
 for key in grad_numerical.keys():
-    diff = np.average( np.abs(grad_backprop[key] - grad_numerical[key]) )
+    diff = np.average(np.abs(grad_backprop[key] - grad_numerical[key]))
     print(key + ":" + str(diff))

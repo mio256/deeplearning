@@ -1,9 +1,10 @@
 # coding: utf-8
-import sys, os
+import sys
+import os
 sys.path.append(os.pardir)  # 親ディレクトリのファイルをインポートするための設定
 import numpy as np
 import matplotlib.pyplot as plt
-from dataset.mnist import load_mnist
+from dataset_d.mnist import load_mnist
 from common.multi_layer_net import MultiLayerNet
 from common.util import shuffle_dataset
 from common.trainer import Trainer
@@ -58,13 +59,14 @@ col_num = 5
 row_num = int(np.ceil(graph_draw_num / col_num))
 i = 0
 
-for key, val_acc_list in sorted(results_val.items(), key=lambda x:x[1][-1], reverse=True):
-    print("Best-" + str(i+1) + "(val acc:" + str(val_acc_list[-1]) + ") | " + key)
+for key, val_acc_list in sorted(results_val.items(), key=lambda x: x[1][-1], reverse=True):
+    print("Best-" + str(i + 1) + "(val acc:" + str(val_acc_list[-1]) + ") | " + key)
 
-    plt.subplot(row_num, col_num, i+1)
-    plt.title("Best-" + str(i+1))
+    plt.subplot(row_num, col_num, i + 1)
+    plt.title("Best-" + str(i + 1))
     plt.ylim(0.0, 1.0)
-    if i % 5: plt.yticks([])
+    if i % 5:
+        plt.yticks([])
     plt.xticks([])
     x = np.arange(len(val_acc_list))
     plt.plot(x, val_acc_list)
